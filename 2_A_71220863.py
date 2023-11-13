@@ -1,4 +1,67 @@
-def buatKata(str):
+Tentu, kita bisa menggunakan pendekatan sederhana tanpa menggunakan built-in `sort`. Berikut adalah implementasinya:
+
+```python
+class PriorityQueueSorted:
+    def __init__(self):
+        self.queue = []
+
+    def is_empty(self):
+        return len(self.queue) == 0
+
+    def __len__(self):
+        return len(self.queue)
+
+    def remove(self):
+        if not self.is_empty():
+            self.queue.pop(0)
+
+    def peek(self):
+        if not self.is_empty():
+            return self.queue[0]
+
+    def add(self, data, priority):
+        new_item = (data, priority)
+        i = 0
+        while i < len(self.queue) and priority >= self.queue[i][1]:
+            i += 1
+        self.queue.insert(i, new_item)
+
+    def print_all(self):
+        print([item[0] for item in self.queue])
+
+# TEST CASE
+myQueue = PriorityQueueSorted()
+
+myQueue.add('Gian', 2)
+myQueue.add('Kezia', 8)
+
+myQueue.print_all()
+
+print("Peek:", myQueue.peek())
+
+myQueue.add('Glen', 5)
+myQueue.add('Christo', 9)
+
+myQueue.print_all()
+
+print("Peek:", myQueue.peek())
+
+print("========REMOVE========")
+
+myQueue.remove()
+myQueue.print_all()
+
+myQueue.remove()
+myQueue.print_all()
+
+myQueue.remove()
+myQueue.print_all()
+
+myQueue.add('Saya', 7)
+myQueue.print_all()
+```
+
+Anda dapat menjalankan kode ini untuk menguji implementasinya. buatKata(str):
     strLength = len(str)
     if strLength % 2 == 0:
        return str[0] + str[1]+str[2],"dan",str[-3]+ str[-2],str[1]
@@ -79,4 +142,4 @@ myQueue.add('Saya', 7)
 myQueue.print_all()
 ```
 
-Anda dapat menjalankan kode ini untuk menguji implementasinya.
+
