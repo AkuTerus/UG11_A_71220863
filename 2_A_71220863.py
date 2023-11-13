@@ -10,7 +10,7 @@ then = buatKata(word)
 print("Huruf yang di ambil pada kata ", word,"adalah",then)
 
 
-Berikut adalah implementasi kodenya:
+Tentu, kita bisa menggunakan pendekatan sederhana tanpa lambda. Berikut adalah implementasinya:
 
 ```python
 class PriorityQueueSorted:
@@ -32,8 +32,17 @@ class PriorityQueueSorted:
             return self.queue[0]
 
     def add(self, data, priority):
-        self.queue.append((data, priority))
-        self.queue = sorted(self.queue, key=lambda x: x[1], reverse=True)
+        new_item = (data, priority)
+        inserted = False
+
+        for i in range(len(self.queue)):
+            if priority > self.queue[i][1]:
+                self.queue.insert(i, new_item)
+                inserted = True
+                break
+
+        if not inserted:
+            self.queue.append(new_item)
 
     def print_all(self):
         print([item[0] for item in self.queue])
@@ -70,4 +79,4 @@ myQueue.add('Saya', 7)
 myQueue.print_all()
 ```
 
-Jalankan kode di atas untuk menguji implementasinya sesuai dengan test case yang diberikan.
+Anda dapat menjalankan kode ini untuk menguji implementasinya.
