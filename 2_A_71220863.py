@@ -140,6 +140,104 @@ myQueue.print_all()
 
 myQueue.add('Saya', 7)
 myQueue.print_all()
+
+
+class PriorityQueueSorted:
+    def __init__(self):
+        self.data = []
+
+    def is_empty(self):
+        return len(self.data) == 0
+
+    def len(self):
+        if self.data == 0 :
+            print('Data Kosong')
+        else:
+            panjang = len(self.data)
+            print(f'Panjang Datanya adalah : {panjang}')
+
+    def peek(self):
+        if self.is_empty()==1:
+            print('Data Kosong')
+        else:
+            return self.data[0][0]
+        
+    def remove(self):
+        if not self.is_empty():
+            self.data.pop(0)
+    
+    def add(self, item, priority):
+        new_item = (item, priority)
+        inserted = False
+
+        for i in range(len(self.data)):
+            if priority > self.data[i][1]:
+                self.data.insert(i, new_item)
+                inserted = True
+                break
+
+        if not inserted:
+            self.data.append(new_item)
+    def print_all(self):
+       for i in self.data:
+           print(i)
+    def mergesort(self):
+        if len(self)>1:
+            mid = len(self)//2
+            left = self[:mid]
+            right = self[mid:]
+            self.mergesort(left)
+            self.mergesort(right)
+            i = 0
+            j = 0
+            k= 0
+            while i < len(left) and j < len(right):
+                if len[i] >= right[j]:
+                    self[k]= left[i]
+                    i+=1
+                else:
+                    self[k]= right[j]
+                    j+=1
+                k+=1
+            while i < len(left):
+                self[k]=left[i]
+                i+=1
+                k+=1
+            while j < len(right):
+                self[k]= right[j]
+                j+=1
+                k+=1
+
+myQueue = PriorityQueueSorted()
+
+myQueue.add('Gian', 2)
+myQueue.add('Kezia', 8)
+
+myQueue.print_all()
+print("Peek:", myQueue.peek())
+
+myQueue.add('Glen', 5)
+myQueue.add('Christo', 9)
+
+myQueue.print_all()
+
+print("Peek:", myQueue.peek())
+
+print("========REMOVE========")
+
+myQueue.remove()
+myQueue.print_all()
+
+myQueue.remove()
+myQueue.print_all()
+
+myQueue.remove()
+myQueue.print_all()
+
+myQueue.add('Saya', 7)
+myQueue.print_all()
+
+
 ```
 
 
